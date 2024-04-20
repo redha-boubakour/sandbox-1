@@ -1,12 +1,14 @@
-import Header from "@/components/Header/page";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
+import { AnimatePresence } from "framer-motion";
+
+export default function App({ Component, pageProps, router }: AppProps) {
     return (
         <>
-            <Header />
-            <Component {...pageProps} />
+            <AnimatePresence mode='wait'>
+                <Component key={router.route} {...pageProps} />
+            </AnimatePresence>
         </>
     );
 }
